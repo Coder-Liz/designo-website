@@ -1,0 +1,40 @@
+@use '../util/' as u;
+
+.button {
+  font-size: u.rem(15);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.067em;
+  width: u.rem(152);
+  height: u.rem(56);
+  border-radius: u.rem(8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-property: background-color, color;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+  text-transform: uppercase;
+
+  &.on-dark {
+    background-color: var(--button-primary-bg);
+    color: var(--button-primary-text);
+
+    box-shadow: 0px 2px 4px hsla(11, 72%, 66%, 0.1),
+      0px 8px 16px hsla(11, 72%, 66%, 0.2);
+
+    &:hover {
+      background-color: var(--button-primary-bg-hover);
+      color: var(--button-primary-text-hover);
+    }
+  }
+
+  &.on-light {
+    background-color: var(--clr-peach);
+    color: var(--clr-white);
+
+    &:hover {
+      background-color: var(--clr-light-peach);
+    }
+  }
+}

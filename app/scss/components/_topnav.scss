@@ -1,0 +1,152 @@
+@use '../util' as u;
+
+.topnav {
+  padding-block: u.rem(64);
+  background-color: var(--clr-white);
+  position: relative;
+  z-index: 10;
+
+  @include u.breakpoint-down(small) {
+    padding-block: u.rem(30);
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    width: u.rem(202);
+    height: u.rem(27);
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &__menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: u.rem(8);
+
+    @include u.breakpoint-down(small) {
+      display: block;
+
+      &.is-active {
+        .topnav__open {
+          display: none;
+        }
+
+        .topnav__close {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__open {
+    @include u.breakpoint-down(small) {
+      display: block;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &__close {
+    display: none;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &__overlay {
+    display: none;
+
+    @include u.breakpoint-down(small) {
+      display: block;
+      position: fixed;
+      width: 100%;
+      inset: u.rem(96) 0 0 0;
+      background-color: var(--clr-nav-overlay);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 19;
+      transition: opacity 250ms ease-in-out;
+
+      &.is-active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  }
+
+  &__navigation {
+    @include u.breakpoint-down(small) {
+      position: absolute;
+      top: u.rem(96);
+      left: 0;
+      width: 100%;
+      padding: u.rem(48) u.rem(24);
+      background-color: var(--clr-dark-grey);
+      transform: translateY(-196%);
+      z-index: 20;
+
+      &.is-open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: u.rem(42);
+    align-items: center;
+
+    @include u.breakpoint-down(small) {
+      flex-direction: column;
+      gap: u.rem(32);
+      align-items: flex-start;
+    }
+  }
+
+  &__link {
+    display: block;
+    font-size: u.rem(14);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.143em;
+    text-transform: uppercase;
+    color: var(--clr-dark-grey);
+
+    &::after {
+      content: '';
+      display: block;
+      height: u.rem(2);
+      background: linear-gradient(
+        to right,
+        var(--clr-peach),
+        var(--clr-light-peach)
+      );
+      margin-top: u.rem(4);
+      opacity: 0;
+      transition: opacity 250ms ease-in-out;
+    }
+
+    @include u.breakpoint-down(small) {
+      color: var(--light-text);
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+}

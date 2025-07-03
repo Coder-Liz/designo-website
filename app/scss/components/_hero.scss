@@ -1,0 +1,124 @@
+@use '../util' as u;
+
+.hero {
+  position: relative;
+  margin-block-end: u.rem(160);
+
+  @include u.breakpoint-down(large) {
+    margin-block-end: u.rem(120);
+  }
+
+  &__bg-pattern-leaf {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(u.rem(320));
+
+    @include u.breakpoint-down(large) {
+      display: none;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+    width: min(100% - u.rem(48), u.rem(1110));
+    margin-inline: auto;
+    height: u.rem(640);
+    border-radius: u.rem(15);
+    background-color: var(--clr-peach);
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: u.rem(95);
+
+    @include u.breakpoint-down(large) {
+      height: u.rem(843);
+
+      flex-direction: column;
+      padding: 0;
+    }
+
+    @include u.breakpoint-down(small) {
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+
+  &__bg-pattern {
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+
+    @include u.breakpoint-down(large) {
+      transform: translate(15%, 15%);
+    }
+
+    @include u.breakpoint-down(small) {
+      transform: translate(42%, 13%);
+      max-width: unset;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: u.rem(16);
+    z-index: 1; //making sure that the content is above the image
+
+    @include u.breakpoint-down(large) {
+      align-items: center;
+      text-align: center;
+      padding: u.rem(60) u.rem(24) 0 u.rem(24);
+    }
+
+    @include u.breakpoint-down(small) {
+      max-width: u.rem(500);
+    }
+  }
+
+  &__title {
+    font-size: u.rem(48);
+    color: var(--light-text);
+    width: 20ch;
+
+    @include u.breakpoint-down(small) {
+      font-size: u.rem(32);
+      width: 100%;
+    }
+  }
+
+  &__description {
+    color: var(--light-text);
+    width: 45ch;
+    margin-block-end: u.rem(24);
+
+    @include u.breakpoint-down(small) {
+      width: 100%;
+    }
+  }
+
+  &__image {
+    margin-left: -180px;
+    margin-bottom: -220px;
+
+    @include u.breakpoint-down(large) {
+      margin: 0;
+      margin-top: -100px;
+    }
+
+    @include u.breakpoint-down(small) {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 40%);
+      max-width: unset;
+      margin: 0;
+      z-index: 0;
+      object-fit: contain;
+    }
+  }
+}

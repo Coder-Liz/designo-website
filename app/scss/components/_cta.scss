@@ -1,0 +1,98 @@
+@use '../util' as u;
+
+.cta {
+  position: relative;
+
+  background-image: linear-gradient(
+    to bottom,
+    transparent 80%,
+    var(--clr-black) 80%,
+    var(--clr-black) 100%
+  );
+
+  @include u.breakpoint-down(small) {
+    background-image: linear-gradient(
+      to bottom,
+      transparent 50%,
+      var(--clr-black) 50%,
+      var(--clr-black) 100%
+    );
+  }
+
+  &__wrapper {
+    position: relative;
+    background-color: var(--clr-peach);
+    border-radius: u.rem(15);
+    overflow: hidden;
+  }
+
+  &__bg-pattern {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateY(-25%);
+    pointer-events: none;
+
+    @include u.breakpoint-down(large) {
+      left: 0;
+      right: unset;
+    }
+
+    @include u.breakpoint-down(small) {
+      max-width: unset;
+      left: -75%;
+    }
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: u.rem(72) u.rem(95) u.rem(48);
+
+    @include u.breakpoint-down(large) {
+      flex-direction: column;
+      gap: 32px;
+      text-align: center;
+      padding-block: u.rem(56);
+    }
+
+    @include u.breakpoint-down(small) {
+      padding: u.rem(64) u.rem(24);
+    }
+  }
+
+  &__text-content {
+    display: grid;
+    gap: u.rem(24);
+
+    @include u.breakpoint-down(large) {
+      max-width: u.rem(430);
+    }
+  }
+
+  &__title {
+    font-size: u.rem(40);
+    color: var(--light-text);
+    width: 15ch;
+
+    @include u.breakpoint-down(large) {
+      width: 100%;
+    }
+
+    @include u.breakpoint-down(small) {
+      font-size: u.rem(32);
+      letter-spacing: 0;
+    }
+  }
+
+  &__description {
+    color: var(--light-text);
+    width: 45ch;
+
+    @include u.breakpoint-down(large) {
+      width: 100%;
+    }
+  }
+}

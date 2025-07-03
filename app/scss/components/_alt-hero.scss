@@ -1,0 +1,95 @@
+@use '../util' as u;
+
+.alt-hero {
+  margin-block-end: u.rem(160);
+
+  @include u.breakpoint-down(large) {
+    margin-block-end: u.rem(120);
+  }
+
+  @include u.breakpoint-down(small) {
+    margin-block-end: u.rem(96);
+  }
+
+  &__wrapper {
+    background-color: var(--clr-peach);
+    border-radius: u.rem(15);
+    position: relative;
+    overflow: hidden;
+
+    @include u.breakpoint-down(small) {
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+
+  &__bg-pattern-intro {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateY(-25%);
+    pointer-events: none;
+
+    @include u.breakpoint-down(small) {
+      max-width: unset;
+      transform: translateY(0);
+    }
+  }
+
+  &__bg-pattern-intro.app {
+    left: 0;
+
+    @include u.breakpoint-down(small) {
+      max-width: unset;
+      transform: translate(9%, -45%);
+    }
+  }
+
+  &__bg-pattern-intro.graphic {
+    left: 0;
+
+    @include u.breakpoint-down(large) {
+      transform: translate(40%, -25%);
+    }
+
+    @include u.breakpoint-down(small) {
+      transform: translate(-25%, -50%);
+    }
+  }
+
+  &__content {
+    display: grid;
+    gap: u.rem(24);
+    padding: u.rem(64);
+    text-align: center;
+    place-items: center;
+    position: relative;
+
+    @include u.breakpoint-down(small) {
+      padding: u.rem(108) u.rem(24);
+    }
+  }
+
+  &__title {
+    font-size: u.rem(48);
+    color: var(--light-text);
+
+    @include u.breakpoint-down(small) {
+      font-size: u.rem(32);
+    }
+  }
+
+  &__description {
+    color: var(--light-text);
+    max-width: u.rem(400);
+
+    @include u.breakpoint-down(small) {
+      font-size: u.rem(15);
+      line-height: 1.6;
+    }
+  }
+
+  &__description.app {
+    max-width: u.rem(345);
+  }
+}

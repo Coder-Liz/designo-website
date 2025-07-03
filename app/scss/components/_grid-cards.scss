@@ -1,0 +1,67 @@
+@use '../util' as u;
+
+.grid-cards {
+  position: relative;
+  margin-block-end: u.rem(160);
+
+  @include u.breakpoint-down(large) {
+    margin-block-end: u.rem(120);
+  }
+
+  &__bg-pattern-leaf {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(40%, 30%);
+    z-index: -1;
+    pointer-events: none;
+
+    @include u.breakpoint-down(large) {
+      display: none;
+    }
+
+    &.contact {
+      transform: translate(0%, 15%);
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: u.rem(30);
+
+    @include u.breakpoint-down(large) {
+      flex-direction: column;
+      gap: u.rem(80);
+    }
+
+    @include u.breakpoint-down(small) {
+      gap: u.rem(48);
+    }
+  }
+
+  &__card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: u.rem(48);
+    align-items: center;
+    text-align: center;
+  }
+
+  &__content {
+    display: grid;
+    gap: u.rem(32);
+  }
+
+  &__name {
+    font-size: u.rem(20);
+  }
+
+  &__cta {
+    width: fit-content;
+    padding: u.rem(20.5) u.rem(18);
+    letter-spacing: 0.067em;
+    margin: 0 auto;
+  }
+}

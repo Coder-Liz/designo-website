@@ -1,0 +1,129 @@
+@use '../util' as u;
+
+.contact {
+  margin-block-end: u.rem(160);
+
+  @include u.breakpoint-down(large) {
+    margin-block-end: u.rem(120);
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: u.rem(62.5) u.rem(95);
+    border-radius: u.rem(15);
+    background-color: var(--clr-peach);
+    color: var(--light-text);
+
+    background-image: url(/assets/contact/desktop/bg-pattern-hero-desktop.svg);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-position-x: left;
+
+    @include u.breakpoint-down(large) {
+      flex-direction: column;
+      gap: u.rem(40);
+      padding: u.rem(72) u.rem(58);
+    }
+
+    @include u.breakpoint-down(small) {
+      width: 100%;
+      padding: u.rem(72) u.rem(24);
+      text-align: center;
+      gap: u.rem(48);
+      border-radius: 0;
+
+      background-image: url(/assets/contact/mobile/bg-pattern-hero-contact-mobile.svg);
+      background-position: top;
+      background-position-x: 25%;
+    }
+  }
+
+  &__text-wrapper {
+    display: grid;
+    gap: u.rem(32);
+  }
+
+  &__title {
+    font-size: u.rem(48);
+
+    @include u.breakpoint-down(small) {
+      font-size: u.rem(32);
+    }
+  }
+
+  &__description {
+    max-width: u.rem(445);
+
+    @include u.breakpoint-down(large) {
+      width: 100%;
+      max-width: unset;
+    }
+  }
+
+  &__form {
+    width: u.rem(380);
+    display: grid;
+    gap: u.rem(24);
+
+    @include u.breakpoint-down(large) {
+      width: 100%;
+    }
+  }
+
+  &__form-group {
+    position: relative;
+
+    input,
+    textarea {
+      font-family: inherit;
+      font-size: u.rem(15);
+      background: transparent;
+      color: var(--light-text);
+      border: none;
+      border-bottom: 1px solid var(--clr-white);
+      width: 100%;
+      padding: u.rem(8.5) u.rem(16);
+
+      &:focus,
+      &:focus-visible {
+        outline: none;
+        border-bottom: 3px solid var(--clr-white);
+      }
+    }
+  }
+
+  &__error-container {
+    display: flex;
+    gap: u.rem(4);
+    align-items: center;
+
+    position: absolute;
+    top: u.rem(8.5);
+    right: 0;
+    transform: translateX(u.rem(-16));
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  &__error-message {
+    font-size: u.rem(12);
+  }
+
+  &__submitBtn {
+    padding: u.rem(20.5) u.rem(47);
+    letter-spacing: 0.067em;
+    width: fit-content;
+    justify-self: flex-end;
+    border: none;
+    outline: none;
+
+    @include u.breakpoint-down(small) {
+      justify-self: center;
+    }
+  }
+}

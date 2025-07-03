@@ -1,0 +1,95 @@
+@use '../util' as u;
+
+.grid {
+  position: relative;
+  margin-block-end: u.rem(160);
+
+  @include u.breakpoint-down(small) {
+    margin-block-end: u.rem(120);
+  }
+
+  @include u.breakpoint-down(small) {
+    margin-block-end: u.rem(96);
+  }
+
+  &__bg-pattern-leaf {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: -1;
+
+    @include u.breakpoint-down(large) {
+      display: none;
+    }
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(u.rem(350), 1fr));
+    gap: u.rem(32);
+    position: relative;
+
+    @include u.breakpoint-down(large) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @include u.breakpoint-down(small) {
+      gap: u.rem(40);
+    }
+  }
+
+  &__card {
+    width: 100%;
+    border-radius: u.rem(15);
+    overflow: hidden;
+
+    @include u.breakpoint-down(large) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include u.breakpoint-down(small) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  &__card-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: u.rem(16);
+    padding: u.rem(32);
+    width: 100%;
+    background-color: var(--card-bg);
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--clr-peach);
+      color: var(--light-text);
+
+      h3 {
+        color: var(--light-text);
+      }
+    }
+  }
+
+  &__title {
+    font-size: u.rem(20);
+    color: var(--clr-peach);
+  }
+
+  &__text {
+    max-width: u.rem(380);
+  }
+}

@@ -93,6 +93,11 @@
         border-bottom: 3px solid var(--clr-white);
       }
     }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: var(--clr-placeholder);
+    }
   }
 
   &__error-container {
